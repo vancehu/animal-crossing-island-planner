@@ -1,0 +1,13 @@
+
+
+export function addHorizontalSquare(
+  params: { x0: number, y0: number, x1: number, y1: number, z: number },
+  posList: number[],
+  uvList?: number[]
+): void {
+  const { x0, y0, x1, y1, z } = params;
+  posList.push(x0, y0, z, x1, y0, z, x1, y1, z);
+  uvList?.push(0, 0, 1, 0, 1, 1);
+  posList.push(x0, y0, z, x1, y1, z, x0, y1, z);
+  uvList?.push( 0, 0, 1, 1, 0, 1);
+}

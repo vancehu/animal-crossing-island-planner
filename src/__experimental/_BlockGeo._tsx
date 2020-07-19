@@ -1,0 +1,66 @@
+import { QuadraticBezierCurve, Vector2, Float32BufferAttribute, BufferGeometry } from 'three';
+
+const steps = 5;
+const curvatureMode = false;
+
+
+const edges = {
+  bottom: new QuadraticBezierCurve(
+    new Vector2(0, 0), new Vector2(0.5, -0.1), new Vector2(1, 0)
+  ).getPoints(steps).map(point => point.y),
+  top: new QuadraticBezierCurve(
+    new Vector2(0, 1), new Vector2(0.5, 1.1), new Vector2(1, 1)
+  ).getPoints(steps).map(point => point.y),
+  left: new QuadraticBezierCurve(
+    new Vector2(0, 0), new Vector2(-0.1, 0.5), new Vector2(0, 1)
+  ).getPoints(steps).map(point => point.x),
+  right: new QuadraticBezierCurve(
+    new Vector2(1, 0), new Vector2(1.1, 0.5), new Vector2(1, 1)
+  ).getPoints(steps).map(point => point.x)
+}
+
+const xyPoints: Vector2[][] = [];
+
+for (let i = 0; i <= steps; i++) {
+  xyPoints[i] = [];
+  for (let j = 0; j <= steps; j++) {
+    const x = (edges.right[j] - edges.left[j]) * i / steps + edges.left[j];
+    const y = (edges.top[i] - edges.bottom[i]) * j / steps + edges.bottom[i];
+    console.log(x, y);
+
+    xyPoints[i][j] = new Vector2(x, y)
+  }
+}
+
+const vertices = {
+  pos: [] as number[]
+}
+
+
+for (let i = 0; i < steps; i++) {
+  for (let j = 0; j < steps; j++) {
+    vertices.pos.push(xyPoints[i][j].x, xyPoints[i][j].y, 0);
+    vertices.pos.push(xyPoints[i + 1][j].x, xyPoints[i + 1][j].y, 0);
+    vertices.pos.push(xyPoints[i + 1][j + 1].x, xyPoints[i + 1][j + 1].y, 0);
+    vertices.pos.push(xyPoints[i][j + 1].x, xyPoints[i][j + 1].y, 0);
+    vertices.pos.push(xyPoints[i][j].x, xyPoints[i][j].y, 0);
+    vertices.pos.push(xyPoints[i + 1][j + 1].x, xyPoints[i + 1][j + 1].y, 0);
+  }
+}
+
+export const BlockGeo = new BufferGeometry().setAttribute('position', new Float32BufferAttribute(vertices.pos, 3));
+console.log(BlockGeo);
+
+// const shape = new Shape()
+//   .moveTo(0, 0)
+//   .quadraticCurveTo(0.5, -0.05, 1, 0)
+//   .quadraticCurveTo(1.05, 0.5, 1, 1)
+//   .quadraticCurveTo(0.5, 1.05, 0, 1)
+//   .quadraticCurveTo(-0.05, 0.5, 0, 0)
+
+
+// const geometry = new ExtrudeBufferGeometry(shape, {
+//   bevelEnabled: false,
+//   depth: 10,
+//   curveSegments: 4
+// });

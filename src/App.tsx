@@ -1,25 +1,19 @@
 import React from 'react';
-import logo from './logo.svg';
+import { Canvas } from 'react-three-fiber';
 import './App.css';
+import { World } from './components/canvas/World';
+import { UIRoot } from './components/ui/UIRoot';
+import { ThreeStats } from './ThreeStats';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Canvas id='mainCanvas' pixelRatio={window.devicePixelRatio}>
+        <World />
+      </Canvas>
+      <UIRoot/>
+      {/* <ThreeStats /> */}
+    </>
   );
 }
 

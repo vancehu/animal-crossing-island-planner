@@ -1,0 +1,15 @@
+export function addVerticalSquare(
+  x0: number,
+  y0: number,
+  x1: number,
+  y1: number,
+  z0: number,
+  z1: number,
+  posList: number[],
+  uvList?: number[]
+): void {
+  posList.push(x0, y0, z0, x1, y1, z0, x0, y0, z1);
+  uvList?.push(0, 0, 1, 0, 0, 1);
+  posList.push(x0, y0, z1, x1, y1, z0, x1, y1, z1);
+  uvList?.push(1, 0, 1, 1, 0, 1);
+}

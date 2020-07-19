@@ -11,3 +11,32 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+html, body, #root, #mainCanvas {
+  height: 100%;
+}
+
+.tools {
+  position: fixed;
+  top: 20vh;
+  left: 20vw;
+}
+
+.toolbox {
+  /* background-color: #ffffffcc; */
+  background-image: url('./icons/water.png');
+  background-size: 70% 70%;
+  background-position: 15% 15%;
+  background-repeat: no-repeat;
+  position: fixed;
+  left: 20px;
+  top: 20px;
+  height: 60px;
+  width: 60px;
+  border-radius: 30px;
+  border: 3px solid goldenrod;
+  box-sizing: border-box;
+}
+
+.toolbox {
+}
