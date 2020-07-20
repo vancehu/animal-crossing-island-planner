@@ -18,25 +18,196 @@ html, body, #root, #mainCanvas {
 
 .tools {
   position: fixed;
-  top: 20vh;
-  left: 20vw;
+  top: 10px;
+  left: 10px;
 }
 
 .toolbox {
-  /* background-color: #ffffffcc; */
-  background-image: url('./icons/water.png');
-  background-size: 70% 70%;
-  background-position: 15% 15%;
-  background-repeat: no-repeat;
   position: fixed;
-  left: 20px;
-  top: 20px;
-  height: 60px;
-  width: 60px;
+  left: 10px;
+  top: 10px;
+  padding: 10px 0;
+  width: 70px;
+  height: auto;
+  background-color: #fff9e6;
   border-radius: 30px;
-  border: 3px solid goldenrod;
-  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: width 1px;
+  opacity: 0.95;
 }
 
-.toolbox {
+
+.btn {
+  background-color: #ffffff;
+  background-size: 70% 70%;
+  background-repeat: no-repeat; 
+  background-position: 50% 50%;
+  width: 40px;
+  height: 40px;
+  border: 3px solid #fde87f;
+  border-radius: 30px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn:hover {
+  border: 3px solid #45c1af;
+  overflow: unset;
+  z-index: 1;
+}
+
+.btn:active {
+  opacity: 0.8;
+  overflow: unset;
+  z-index: 1;
+}
+
+.btn-selected {
+  background-color: #45c1af;
+  border: 3px solid #45c1af;
+}
+
+.btn:not(:first-of-type) {
+  margin-top: 10px;
+}
+
+
+.divider {
+  height: 2px;
+  width: 50px;
+  background-color: #FFD664;
+  margin-top: 10px;
+  margin-bottom: 5px;
+}
+
+.tooltip-container {
+  position: absolute;
+  left: 120%;
+  width: 160px;
+  top: 0;
+  bottom: 0;
+  display: flex;
+  align-items: center;
+}
+
+.tooltip-arrow {
+  width: 0; 
+  height: 0; 
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent; 
+  border-right:10px solid teal; 
+}
+
+.tooltip {
+  height: 100%;
+  text-align: center;
+  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding-left: 10px;
+  padding-right: 10px;
+  background-color: teal;
+  color: white;
+  font-weight: bold;
+}
+
+@media (orientation: landscape) {
+  /* landscape */
+  .toolbox {
+    flex-direction: row;
+    padding: 0 10px;
+    width: auto;
+    height: 70px;
+  }
+  .btn:not(:first-of-type) {
+    margin-top: unset;
+    margin-left: 10px;
+  }
+  
+.divider {
+  height: 50px;
+  width: 2px;
+  margin-left: 10px;
+  margin-right: 5px;
+}
+}
+
+.cliffup {
+  background-image: url('./icons/cliffup.png');
+}
+
+.cliffdown {
+  background-image: url('./icons/cliffdown.png');
+}
+
+.water {
+  background-image: url('./icons/water.png');
+}
+
+.export {
+  background-image: url('./icons/export.png');
+}
+
+.import {
+  background-image: url('./icons/import.png');
+}
+
+.github {
+  background-image: url('./icons/github.png');
+}
+
+.pan {
+  background-image: url('./icons/pan.png');
+}
+
+.rotate {
+  background-image: url('./icons/rotate.png');
+}
+
+.zoom {
+  background-image: url('./icons/zoom.png');
+}
+
+.popup-overlay {
+  position: fixed;
+  z-index: 2;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #00000055;
+}
+
+.popup {
+  background-color: white;
+  border: 3px solid #fde87f;
+  border-radius: 10px;
+  padding: 30px;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.popup-close {
+  position: absolute;
+  top: -13px;
+  right: -13px;
+  border: 3px solid #FFD664;
+  background-color: #FFD664;
+  width: 30px;
+  height: 30px;
+  border-radius: 18px;
+}
+
+.popup input{
+  margin-bottom: 1em;
 }

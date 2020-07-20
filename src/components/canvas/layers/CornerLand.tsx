@@ -35,11 +35,11 @@ const uvList = {
 const handleUpdate: (direction: CornerDirection) => MeshLayerRenderFunc = direction =>
   (blocks, prevBlocks, mesh) => {
     const dummyObj = new Object3D();
-    loop: for (let i = 0; i < blocks.length; i++) {
+    for (let i = 0; i < blocks.length; i++) {
       const block = blocks[i];
       if (block !== prevBlocks[i]) {
         if (isEdge(i)) {
-          continue loop;
+          continue;
         }
 
         let y = -1;
@@ -66,7 +66,7 @@ const handleUpdate: (direction: CornerDirection) => MeshLayerRenderFunc = direct
         }
 
         if (y === -1) {
-          continue loop;
+          continue;
         }
         const x = i % TERRAIN_WIDTH;
         const z = -(i - x) / TERRAIN_WIDTH;

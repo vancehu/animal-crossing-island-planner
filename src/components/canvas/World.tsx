@@ -25,14 +25,15 @@ export function World() {
   const { camera, scene } = useThree();
   useEffect(() => {
     camera.layers.enable(1);
-    scene.background = new Color(0xfff9e6);
+    scene.background = new Color(0xcdf0ff);
   }, []);
 
   return (
-    <Provider store={store}>
+  <Provider store={store}>
       <group>
         <Controls />
-        <ambientLight />
+        <ambientLight intensity={0.5} />
+        <pointLight position={[20, 10, 10]} distance={60} intensity={1.2}/>
         <Land texture={landTexture} />
         <CornerLandNE texture={landTexture} />
         <CornerLandNW texture={landTexture} />

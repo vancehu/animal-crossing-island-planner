@@ -1,5 +1,5 @@
-export const TERRAIN_WIDTH = 40;
-export const TERRAIN_HEIGHT = 32;
+export const TERRAIN_WIDTH = 20;
+export const TERRAIN_HEIGHT = 16;
 export const TERRAIN_SIZE = TERRAIN_WIDTH * TERRAIN_HEIGHT;
 
 export enum TerrainBlock {
@@ -123,11 +123,10 @@ export function getDiagonalDirection(
 function getAdjacentIndices(index: number): {
   top: number, bottom: number, left: number, right: number
 } {
-  const INDEX_NEVER = -1;
   return {
     top: index + TERRAIN_WIDTH,
     bottom: index - TERRAIN_WIDTH,
-    left: index % TERRAIN_WIDTH > 0 ? index - 1 : INDEX_NEVER,
-    right: index % TERRAIN_WIDTH < TERRAIN_WIDTH - 1 ? index + 1 : INDEX_NEVER
+    left: index - 1,
+    right: index + 1
   }
 }
